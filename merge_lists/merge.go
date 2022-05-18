@@ -1,12 +1,4 @@
-package main
-
-import "fmt"
-
-func main() {
-	arr1 := []int{1, 4, 6}
-	arr2 := []int{2, 3, 5}
-	fmt.Print("Success ", Merge(arr1, arr2))
-}
+package merge
 
 func Merge(arr1 []int, arr2 []int) []int {
 	var mergedArr []int
