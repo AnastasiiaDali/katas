@@ -30,4 +30,15 @@ func TestMerge(t *testing.T) {
 			t.Errorf("got %d want %d", got, want)
 		}
 	})
+	t.Run(" will not pass", func(t *testing.T) {
+		arr1 := []int{1, 2, 3, 4}
+		arr2 := []int{5, 6, 7, 8}
+
+		want := []int{1, 2, 3, 4, 5, 6, 7, 8}
+		got := Merge(arr2, arr1)
+
+		if reflect.DeepEqual(want, got) != true {
+			t.Errorf("got %d want %d", got, want)
+		}
+	})
 }
