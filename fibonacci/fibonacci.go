@@ -1,20 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/big"
+)
 
 func main() {
-	n := 15
+	n := 93
 	fmt.Printf("Success %v\n", Fibonacci(n))
 }
 
-func Fibonacci(n int) int {
-	a := 0
-	b := 1
+func Fibonacci(n int) string {
+	a := big.NewInt(0)
+	b := big.NewInt(1)
 
 	for i := 0; i < n; i++ {
-		prevB := b
-		b = a + b
-		a = prevB
+		a, b = b, b.Add(a, b)
 	}
-	return a
+
+	return a.String()
 }
