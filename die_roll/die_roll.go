@@ -6,37 +6,26 @@ import (
 	"time"
 )
 
+const die = 100
+
 func main() {
+	rand.Seed(time.Now().UnixNano())
 	fmt.Printf("Success %v\n", DieRoll())
 }
 
 func RandomNumber() int {
-	rand.Seed(time.Now().UnixNano())
 	min := 1
-	max := 7
+	max := die + 1
 	return rand.Intn(max-min) + min
 }
 
-func DieRoll() []int {
-	index1, index2, index3, index4, index5, index6 := 0, 0, 0, 0, 0, 0
+func DieRoll() [die]int {
+
+	arr := [die]int{}
 
 	for i := 0; i < 1000000; i++ {
 		randomNumber := RandomNumber()
-		switch randomNumber {
-		case 1:
-			index1++
-		case 2:
-			index2++
-		case 3:
-			index3++
-		case 4:
-			index4++
-		case 5:
-			index5++
-		default:
-			index6++
-		}
+		arr[randomNumber-1] = arr[randomNumber-1] + 1
 	}
-	arr := []int{index1, index2, index3, index4, index5, index6}
 	return arr
 }
