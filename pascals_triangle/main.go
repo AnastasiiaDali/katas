@@ -3,12 +3,14 @@ package main
 import "fmt"
 
 func main() {
-	num := 7
-	Triangle(num)
+	Triangle()
 }
 
-func Triangle(rows int) {
+func Triangle() {
+	var rows int
 	temp := 1
+	fmt.Print("Please enter the number of rows ")
+	fmt.Scan(&rows)
 
 	for i := 0; i < rows; i++ {
 
