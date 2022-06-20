@@ -1,7 +1,6 @@
 package gloves
 
 import (
-	"math"
 	"strings"
 )
 
@@ -20,9 +19,8 @@ func GlovesAssembler(gloves []string) int {
 
 	for _, v := range temp {
 		value := v / 2
-		floatN := float64(value)
 		if v >= 2 {
-			theNumberOfPairs = theNumberOfPairs + int(math.Floor(floatN))
+			theNumberOfPairs = theNumberOfPairs + value
 		}
 	}
 	return theNumberOfPairs
