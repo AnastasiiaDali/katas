@@ -1,23 +1,23 @@
 package stack_data_structure
 
-import "log"
+import (
+	"log"
+	"strconv"
+)
 
-type Item interface {
-	int | string
-}
-type Stack[T Item] struct {
-	stack       []T
+type Stack struct {
+	stack       []string
 	lastElement int
 }
 
-func NewStack[T Item](capacity int) *Stack[T] {
-	return &Stack[T]{
-		stack:       make([]T, capacity),
+func NewStack(capacity int) *Stack {
+	return &Stack{
+		stack:       make([]string, capacity),
 		lastElement: -1,
 	}
 }
 
-func (s *Stack[T]) Push(item T) bool {
+func (s *Stack) Push(item string) bool {
 	if s.IsFull() {
 		log.Print("stack is full, can not push new item")
 		return false
@@ -27,30 +27,30 @@ func (s *Stack[T]) Push(item T) bool {
 	return true
 }
 
-func (s *Stack[T]) Pop() (T, bool) {
+func (s *Stack) Pop() (string, bool) {
 	if s.IsEmpty() {
-		var nothing T
 		log.Print("stack is empty, nothing to pop")
-		return nothing, false
+		return "zero", false
 	}
 	popItem := s.stack[s.lastElement]
-	s.stack = s.stack[:len(s.stack)-1]
+	i, _ := strconv.Atoi(popItem)
+	s.stack = s.stack[:i]
 	return popItem, true
 }
 
-func (s Stack[T]) Peek() (T, bool) {
+func (s Stack) Peek() (string, bool) {
 	if s.IsEmpty() {
 		log.Print("stack is empty, nothing to peek")
-		return 0, false
+		return "zero", false
 	}
 	peekedItem := s.stack[s.lastElement]
 	return peekedItem, true
 }
 
-func (s *Stack[T]) IsEmpty() bool {
+func (s *Stack) IsEmpty() bool {
 	return s.lastElement == -1
 }
 
-func (s *Stack[T]) IsFull() bool {
+func (s *Stack) IsFull() bool {
 	return s.lastElement == len(s.stack)-1
 }
