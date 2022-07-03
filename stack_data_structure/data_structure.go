@@ -2,22 +2,21 @@ package stack_data_structure
 
 import (
 	"log"
-	"strconv"
 )
 
 type Stack struct {
-	stack       []string
+	stack       []int
 	lastElement int
 }
 
 func NewStack(capacity int) *Stack {
 	return &Stack{
-		stack:       make([]string, capacity),
+		stack:       make([]int, capacity),
 		lastElement: -1,
 	}
 }
 
-func (s *Stack) Push(item string) bool {
+func (s *Stack) Push(item int) bool {
 	if s.IsFull() {
 		log.Print("stack is full, can not push new item")
 		return false
@@ -27,21 +26,20 @@ func (s *Stack) Push(item string) bool {
 	return true
 }
 
-func (s *Stack) Pop() (string, bool) {
+func (s *Stack) Pop() (int, bool) {
 	if s.IsEmpty() {
 		log.Print("stack is empty, nothing to pop")
-		return "zero", false
+		return 0, false
 	}
 	popItem := s.stack[s.lastElement]
-	i, _ := strconv.Atoi(popItem)
-	s.stack = s.stack[:i]
+	s.stack = s.stack[:popItem]
 	return popItem, true
 }
 
-func (s Stack) Peek() (string, bool) {
+func (s Stack) Peek() (int, bool) {
 	if s.IsEmpty() {
 		log.Print("stack is empty, nothing to peek")
-		return "zero", false
+		return 0, false
 	}
 	peekedItem := s.stack[s.lastElement]
 	return peekedItem, true

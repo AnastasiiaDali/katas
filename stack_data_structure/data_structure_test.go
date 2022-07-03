@@ -21,7 +21,7 @@ func TestStackData(t *testing.T) {
 	t.Run("testing Push", func(t *testing.T) {
 		t.Run("Push should return a stack with an item", func(t *testing.T) {
 			//arrange
-			item := "1"
+			item := 1
 			capacity := 5
 
 			stack := stack_data_structure.NewStack(capacity)
@@ -34,7 +34,7 @@ func TestStackData(t *testing.T) {
 		})
 		t.Run("Push should return false if stack is already full", func(t *testing.T) {
 			//arrange
-			item1, item2, item3 := "1", "2", "3"
+			item1, item2, item3 := 1, 2, 3
 			capacity := 2
 
 			stack := stack_data_structure.NewStack(capacity)
@@ -53,7 +53,7 @@ func TestStackData(t *testing.T) {
 	t.Run("testing Peek", func(t *testing.T) {
 		t.Run("Peek should return the last item from the stuck but not remove it", func(t *testing.T) {
 			//arrange
-			item1, item2 := "1", "2"
+			item1, item2 := 1, 2
 			capacity := 5
 
 			stack := stack_data_structure.NewStack(capacity)
@@ -65,7 +65,7 @@ func TestStackData(t *testing.T) {
 			peekedItem, _ := stack.Peek()
 
 			//assert
-			assert.Equal(t, "2", peekedItem)
+			assert.Equal(t, 2, peekedItem)
 			assert.False(t, stack.IsEmpty())
 		})
 		t.Run("Peek should return false if stack is empty", func(t *testing.T) {
@@ -95,7 +95,7 @@ func TestStackData(t *testing.T) {
 		})
 		t.Run("IsEmpty should return false when stack is NOT empty", func(t *testing.T) {
 			//arrange
-			item1 := "1"
+			item1 := 1
 			capacity := 3
 
 			stack := stack_data_structure.NewStack(capacity)
@@ -111,7 +111,7 @@ func TestStackData(t *testing.T) {
 	t.Run("testing IsFull", func(t *testing.T) {
 		t.Run("IsFull should return true when stack is full", func(t *testing.T) {
 			//arrange
-			item1, item2 := "1", "2"
+			item1, item2 := 1, 2
 			capacity := 2
 			stack := stack_data_structure.NewStack(capacity)
 
@@ -126,7 +126,7 @@ func TestStackData(t *testing.T) {
 		})
 		t.Run("IsFull should return false when stack is NOT full", func(t *testing.T) {
 			//arrange
-			item1 := "1"
+			item1 := 1
 			capacity := 3
 
 			stack := stack_data_structure.NewStack(capacity)
