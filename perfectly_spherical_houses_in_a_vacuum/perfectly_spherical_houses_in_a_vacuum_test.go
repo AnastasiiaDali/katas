@@ -14,6 +14,8 @@ func TestHouseCounter(t *testing.T) {
 		{input: "^v^v^v^v^v", want: 2},
 		{input: "^>v<", want: 4},
 		{input: ">", want: 2},
+		{input: "^^>>vv<<", want: 8},
+		{input: "^^>>vv<<^", want: 8},
 	}
 
 	for _, test := range testCases {

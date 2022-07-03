@@ -6,18 +6,18 @@ import (
 	"golang.org/x/exp/slices"
 )
 
+//input: "^>v<", want: 4
+//axis x and y
+// ^ = y + 1
+// v = y - 1
+// > = x + 1
+// < = x - 1
+
 func HouseCounter(direction string) int {
-	//input: "^>v<", want: 4
-	// ^ = y + 1
-	// v = y - 1
-	// > = x + 1
-	// < = x - 1
-
-	coordinatesXY := [][]int{{0, 0}}
-
 	houses := 1
-
+	coordinatesXY := [][]int{{0, 0}}
 	directions := strings.Split(direction, "")
+
 	for _, dir := range directions {
 		lastCoordinates := coordinatesXY[len(coordinatesXY)-1]
 
