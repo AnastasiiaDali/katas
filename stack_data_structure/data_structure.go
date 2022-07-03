@@ -2,48 +2,46 @@ package stack_data_structure
 
 import (
 	"log"
-	"strconv"
 )
 
 type Stack struct {
-	stack       []string
-	lastElement int
+	StackOfItems []string
+	lastElement  int
 }
 
 func NewStack(capacity int) *Stack {
 	return &Stack{
-		stack:       make([]string, capacity),
-		lastElement: -1,
+		StackOfItems: make([]string, capacity),
+		lastElement:  -1,
 	}
 }
 
 func (s *Stack) Push(item string) bool {
 	if s.IsFull() {
-		log.Print("stack is full, can not push new item")
+		log.Print("StackOfItems is full, can not push new item")
 		return false
 	}
 	s.lastElement += 1
-	s.stack[s.lastElement] = item
+	s.StackOfItems[s.lastElement] = item
 	return true
 }
 
 func (s *Stack) Pop() (string, bool) {
 	if s.IsEmpty() {
-		log.Print("stack is empty, nothing to pop")
+		log.Print("StackOfItems is empty, nothing to pop")
 		return "zero", false
 	}
-	popItem := s.stack[s.lastElement]
-	i, _ := strconv.Atoi(popItem)
-	s.stack = s.stack[:i]
+	popItem := s.StackOfItems[s.lastElement]
+	s.lastElement--
 	return popItem, true
 }
 
 func (s Stack) Peek() (string, bool) {
 	if s.IsEmpty() {
-		log.Print("stack is empty, nothing to peek")
+		log.Print("StackOfItems is empty, nothing to peek")
 		return "zero", false
 	}
-	peekedItem := s.stack[s.lastElement]
+	peekedItem := s.StackOfItems[s.lastElement]
 	return peekedItem, true
 }
 
@@ -52,5 +50,5 @@ func (s *Stack) IsEmpty() bool {
 }
 
 func (s *Stack) IsFull() bool {
-	return s.lastElement == len(s.stack)-1
+	return s.lastElement == len(s.StackOfItems)-1
 }
