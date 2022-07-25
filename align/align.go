@@ -1,16 +1,6 @@
-package main
+package align
 
-import "fmt"
-
-func main() {
-	str := "Akash"
-	length := 9
-	alignment := "center"
-
-	fmt.Printf("Success %v", align(str, length, alignment))
-}
-
-func align(str string, length int, alignment string) string {
+func Align(str string, length int, alignment string) string {
 	lenOfString := len(str)
 	numberOfDots := length - lenOfString
 
