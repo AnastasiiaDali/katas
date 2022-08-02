@@ -16,6 +16,7 @@ func TestHouseCounter(t *testing.T) {
 		{input: ">", want: 2},
 		{input: "^^>>vv<<", want: 8},
 		{input: "^^>>vv<<^", want: 8},
+		{input: "", want: 0},
 	}
 
 	for _, test := range testCases {

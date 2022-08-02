@@ -18,6 +18,10 @@ func HouseCounter(direction string) int {
 	coordinatesXY := [][]int{{0, 0}}
 	directions := strings.Split(direction, "")
 
+	if len(directions) == 0 {
+		return 0
+	}
+
 	for _, dir := range directions {
 		lastCoordinates := coordinatesXY[len(coordinatesXY)-1]
 
