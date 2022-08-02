@@ -1,8 +1,11 @@
 package bubble_test
 
 import (
+	"fmt"
+	"math/rand"
 	"reflect"
 	"testing"
+	"time"
 
 	bubble "merge_lists/bubblesort"
 )
@@ -27,4 +30,26 @@ func TestBubbleSort(t *testing.T) {
 		})
 	}
 
+}
+
+func BenchmarkBubbleSort(b *testing.B) {
+	rand.Seed(time.Now().UnixNano())
+	numbers := oneMillionIntegers()
+
+	result := bubble.BubbleSort(numbers)
+	fmt.Println(result)
+}
+
+func oneMillionIntegers() []int {
+	var numbers = make([]int, 10)
+	for i := 0; i <= 1000000; i++ {
+		n := randomNum()
+		numbers = append(numbers, n)
+	}
+	return numbers
+}
+
+func randomNum() int {
+	randomNumber := rand.Intn(100)
+	return randomNumber
 }
