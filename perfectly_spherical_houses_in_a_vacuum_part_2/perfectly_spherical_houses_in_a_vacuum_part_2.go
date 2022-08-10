@@ -51,8 +51,6 @@ func HouseCounter(direction string) int {
 			}
 			visitedHousesByRobot[robotLocation] += 1
 		}
-
 	}
-
 	return len(visitedHousesByRobot) + len(visitedHousesBySanta) - 1
 }
